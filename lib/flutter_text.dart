@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -39,7 +40,42 @@ class _AdeHomePageState extends State<AdeHomePage> {
       appBar: AppBar(
         title: Text('Shalom Test'),
       ),
-      body: Text('Flutter Text')
+      body: Column(
+        children: [
+          Container(
+              width: double.infinity,
+              padding: EdgeInsets.all(20),
+              height: 200,
+              child: Text(
+                'Welcome to AQSkill',
+                textDirection: TextDirection.ltr,
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 24,
+                  color: Colors.red,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 2,
+                  wordSpacing: 3,
+                ),
+              )),
+          RichText(
+              text: TextSpan(
+            text: 'Dont have an account? ',
+            style: TextStyle(color: Colors.black, fontSize: 16),
+            children: [
+              WidgetSpan(child: Icon(Icons.add)),
+              TextSpan(
+                  text: 'Sign Up',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold, color: Colors.blue),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      print('sign Up');
+                    })
+            ],
+          ))
+        ],
+      ),
     );
   }
 }
